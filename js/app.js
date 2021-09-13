@@ -265,7 +265,6 @@ const getInputValue = (id) => {
 // Main price update function
 const updatePrice = (id, value) => {
   const convertedOldPrice = getInputValue(id);
-  console.log(convertedOldPrice)
   const convertPrice = value;
   const total = convertedOldPrice + convertPrice;
   document.getElementById(id).innerText = total;
