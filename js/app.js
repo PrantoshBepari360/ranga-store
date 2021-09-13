@@ -1,3 +1,4 @@
+// Load data 
 const loadProducts = () => {
   const data = [{
     "id": 1,
@@ -223,27 +224,28 @@ const loadProducts = () => {
   showProducts(data);
 };
 
-// show all product in UI 
+// show all product in ui 
 const showProducts = (products) => {
   products.forEach((product) => {
     const div = document.createElement("div");
     div.classList.add("product");
-    div.innerHTML = `<div class="single-product">
-      <div>
-    <img class="product-image" src=${product.image}></img>
-      </div>
-      <h3>Product Name: ${product.title}</h3>
+    div.innerHTML = `
+    <div class="single-product">
+      <img class="product-image" src=${product.image}></img>
+      <h3>Name: ${product.title.slice(0, 15)}</h3>
       <h3>Category: ${product.category}</h3>
       <h3>People Rating: ${product.rating.count}</h3>
       <h3>Avareg Rating: ${product.rating.rate}</h3>
       <h2>Price: $ ${product.price}</h2>
-      <button onclick="addToCart(${product.id},${product.price})" class="buy-now btn btn-success">add to cart</button>
-      <button onclick="detailsBtn()" class="btn btn-danger">Details</button></div>
+      <button onclick="addToCart(${product.id},${product.price})" class="buy-now btn btn-info">add to cart</button>
+      <button class="btn btn-secondary">Details</button></div>
+    </div>  
       `;
     document.getElementById("all-products").appendChild(div);
   });
 };
 
+// Total Added-Products
 let count = 0;
 const addToCart = (_id, price) => {
   count = count + 1;
@@ -253,13 +255,14 @@ const addToCart = (_id, price) => {
   document.getElementById("total-Products").innerText = count;
 };
 
+// set innerText function
 const getInputValue = (id) => {
   const element = document.getElementById(id).innerText;
   const converted = parseFloat(element);
   return converted;
 };
 
-// main price update function
+// Main price update function
 const updatePrice = (id, value) => {
   const convertedOldPrice = getInputValue(id);
   console.log(convertedOldPrice)
@@ -292,9 +295,7 @@ const updateTaxAndCharge = () => {
 
 //grandTotal update function
 const updateTotal = () => {
-  const grandTotal =
-    getInputValue("price") + getInputValue("delivery-charge") +
-    getInputValue("total-tax");
+  const grandTotal = getInputValue("price") + getInputValue("delivery-charge") + getInputValue("total-tax");
   document.getElementById("total").innerText = grandTotal;
 };
 
