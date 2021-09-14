@@ -232,12 +232,12 @@ const showProducts = (products) => {
     div.innerHTML = `
     <div class="single-product">
       <img class="product-image" src=${product.image}></img>
-      <h3>Name: ${product.title.slice(0, 15)}</h3>
+      <h3>Name: ${product.title.slice(0, 17)}</h3>
       <h3>Category: ${product.category}</h3>
-      <h3>People Rating: ${product.rating.count}</h3>
-      <h3>Avareg Rating: ${product.rating.rate}</h3>
-      <h2>Price: $ ${product.price}</h2>
-      <button onclick="addToCart(${product.id},${product.price})" class="buy-now btn btn-info">add to cart</button>
+      <h5 class="text-success">Reviews: ${product.rating.count} <i class="far fa-eye"></i></h5>
+      <h5 class="text-primary">Rating: ${product.rating.rate} <i class="fas fa-star-half-alt"></i></h5>
+      <h3>Price: $ ${product.price}</h3>
+      <button onclick="addToCart(${product.id},${product.price})" class="buy-now btn btn-info">Add to cart</button>
       <button class="btn btn-secondary">Details</button></div>
     </div>  
       `;
@@ -295,7 +295,7 @@ const updateTaxAndCharge = () => {
 //grandTotal update function
 const updateTotal = () => {
   const grandTotal = getInputValue("price") + getInputValue("delivery-charge") + getInputValue("total-tax");
-  document.getElementById("total").innerText = Math.round(grandTotal* 100) / 100;
+  document.getElementById("total").innerText = Math.round(grandTotal * 100) / 100;
 };
 
 loadProducts();

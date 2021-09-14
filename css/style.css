@@ -27,7 +27,7 @@ body {
 }
 
 .cart {
-  margin-top: 155px;
+  margin-top: 10px;
   width: 350px;
   padding: 10px;
   box-shadow: 10px 10px 20px gray;
@@ -37,6 +37,10 @@ body {
 
 .cart-main {
   padding-right: 30px;
+}
+
+.bg {
+  background-color: rgb(36, 34, 34);
 }
 
 @media only screen and (max-width: 768px) {
